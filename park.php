@@ -1,7 +1,7 @@
 <?php
 $GLOBALS['HASHTYPE'] = 'sha512';
 $GLOBALS['PASSHASH'] = 'b8bc6bc842f7b0440da3b871786f3483640c0c9c062837c5c99509465a1036e8d8b80a60c5aab484c96b4bad6bfdc781739e9cb50580af8bc8bda8bdce6c4752';//rahman404
-$GLOBALS['SECHEAD'] = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36';
+$GLOBALS['SECHEAD'] = 'USER_AGENT';
 $GLOBALS['DEFAULT_TAB'] = 'tabFM';
 $GLOBALS['COOKIE'] = true;
 $GLOBALS['DARK'] = false;
