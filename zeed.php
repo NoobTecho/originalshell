@@ -386,7 +386,7 @@ else if($awal == 'upl_file' && isset($_FILES['ufile'])) {
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <style>
 body {
-	background-color: #333333; /* dark gray */
+	background-color: #202123; /* background lebih gelap seperti ChatGPT */
 	color: #E0E0E0;
 	font-family: Lucida, Verdana;
 	font-size: 12px;
@@ -414,16 +414,16 @@ a {
 }
 .fManager {
 	margin: 10px 0;
-	box-shadow: 1px 1px 1px 1px #333333;
+	box-shadow: 1px 1px 1px 1px #000000;
 }
 .fManager tbody tr:nth-child(2n+1) {
-	background: #383838;
+	background: #2a2a2a;
 }
 .fManager tbody tr:nth-child(2n) {
-	background: #333333;
+	background: #242424;
 }
 .fManager tbody tr:hover {
-	background: #2c2c2c;
+	background: #1f1f1f;
 }
 .fManager thead tr {
 	background-color: #0d47a1; /* blue */
@@ -438,7 +438,7 @@ a {
 	margin: 5px 0;
 	padding: 2px;
 	box-shadow: 1px 1px 1px 1px #000000;
-	background-color: #2b2b2b;
+	background-color: #242424;
 	width: 100%;
 	height: 400px;
 	overflow: auto;
@@ -469,7 +469,7 @@ table td {
 	padding-right: 5px;
 	max-width: 500px;
 	color: #FFFFFF;
-	background: #424242;
+	background: #2e2e2e;
 }
 table th {
 	border: 1px solid #0d47a1;
